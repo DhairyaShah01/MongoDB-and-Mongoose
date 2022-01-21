@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const Dishes = require('../models/dishes');
-const e = require('express');
 
 const dishRouter = express.Router();
 
@@ -48,7 +47,6 @@ dishRouter.route('/:dishId')
 .get((req, res, next) => {
     Dishes.findById(req.params.dishId)
     .then((dish) => {
-        console.log('Dish Created ', dish);
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json(dish);
@@ -74,7 +72,6 @@ dishRouter.route('/:dishId')
 .delete((req, res, next) => {
     Dishes.findByIdAndRemove(req.params.dishId)
     .then((dish) => {
-        console.log('Dish Created ', dish);
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json(dish);
